@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        ">
+
+
+    <!-- DispatcherServlet Context: defines this servlet's request-processing 
+        infrastructure -->
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <annotation-driven />
+
+    <interceptors>
+        <beans:bean
+            class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"
+            p:paramName="theme" />
+        <beans:bean
+            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+            p:paramName="locale" />
+    </interceptors>
+
+
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+        up static resources in the ${webappRoot}/resources directory -->
+    <resources mapping="/resources/**" location="/resources/" />
+
+    
+    <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <beans:property name="prefix" value="/WEB-INF/views/"/>
+        <beans:property name="suffix" value=".jspx"/>
+    </beans:bean>
+
+    <beans:bean id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+        p:basenames="/WEB-INF/i18n/application"
+        p:fallbackToSystemLocale="false" />
+
+    <beans:bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+        p:cookieName="locale" />
+
+    <beans:bean id="themeSource"
+        class="org.springframework.ui.context.support.ResourceBundleThemeSource" />
+
+    <beans:bean id="themeResolver"
+        class="org.springframework.web.servlet.theme.CookieThemeResolver"
+        p:cookieName="theme" p:defaultThemeName="standard" />
+
+
+    <context:component-scan
+        base-package="ru.urvanov.spring6customjsp.controller" />
+
+    <view-controller path="/" view-name="index" />
+    <view-controller path="second" view-name="second" />
+    <view-controller path="simple" view-name="simple" />
+    
+</beans:beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:spring="http://www.springframework.org/tags">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"
+        pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+    <spring:message code="ru.urvanov.spring6customjsp.app_name" var="app_name_var" />
+    <spring:url value="/resources/images/logo.jpg" var="logo_url" />
+    <img alt="logo" src="${logo_url}" width="500" height="100" />
+    <H1>${app_name_var}</H1>
+    <p><a href="?theme=wood">wood</a> | <a href="?theme=school">school</a>
+     | <a href="?theme=pinky">pinky</a>
+      | <a href="?theme=standard">standard</a></p>
+      <p><a href="?locale=en">English</a> | <a href="?locale=ru">Русский</a></p>
+</div>

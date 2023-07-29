@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:spring="http://www.springframework.org/tags"
+    >
+    <jsp:directive.page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+    
+    <spring:message code="ru.urvanov.spring6customjsp.index_page" var="index_page_var" />
+    <spring:message code="ru.urvanov.spring6customjsp.second_page" var="second_page_var" />
+    <spring:url value="/" var="index_page_url" />
+    <spring:url value="/second" var="second_page_url" />
+    <ul>
+    <li><a href="${index_page_url}">${index_page_var}</a></li>
+    <li><a href="${second_page_url}">${second_page_var}</a></li>
+    </ul>
+</div>
