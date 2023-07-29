@@ -39,9 +39,12 @@
         <beans:property name="suffix" value=".jspx"/>
     </beans:bean>
 
+    <!-- i18n localization -->
+    <!-- Remember to set defaultEncoding property! -->
     <beans:bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
         p:basenames="/WEB-INF/i18n/application"
+        p:defaultEncoding="UTF-8" 
         p:fallbackToSystemLocale="false" />
 
     <beans:bean id="localeResolver"
